@@ -15,7 +15,7 @@ var url=require("url");
 function replace(template,product)
 {
     template=template.replace(/#Image#/g,product["image"]);
-    template=template.replace(/#Productname/g,product["productName"]);
+    template=template.replace(/#Productname#/g,product["productName"]);
     template=template.replace(/#From#/g,product["from"]);
     template=template.replace(/#Nutrients/g,product["nutrients"]);
     template=template.replace(/#Quantity#/g,product["quantity"]);
@@ -24,12 +24,10 @@ function replace(template,product)
     template=template.replace(/#id#/g,product["id"]);
     if(product["organic"]==false)
     {
-        template=template.replace(/#Organic#/g,"Not Organic");
-    }
-    else
-    {
         template=template.replace(/#Organic#/g,"not-organic");
     }
+    //else
+        //template=template.replace(/#Organic#/g,"Organic!");
     return template;
 }
 var server=http.createServer(function(req,res)
